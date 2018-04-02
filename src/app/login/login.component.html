@@ -1,10 +1,16 @@
-<div class="header">
-  <h1>
-    Angular Firebase Google Login
-  </h1>
-</div>
-<div class="container">
-  <div class="button">
-    <input type="button" name="button" (click)="login()" value="Click to Sign In">
-  </div>
+<div class="main-div">
+  <mat-card >
+    <mat-card-title>
+      World Cup prono App (Beta)
+    </mat-card-title>
+    <form  class="example-form">
+      <mat-card-content style="text-align:center;">
+        <button style="display: none;" (click)="login()" mat-raised-button color="primary">Login with google</button>
+        <input class="mat-raised-button mat-primary" type="button" name="button" (click)="login()" value="Click to Sign In">
+
+      </mat-card-content>
+      <span><img src="../../assets/worldcup.jpg"  alt="World cup logo">
+    </span>
+    </form>
+  </mat-card>
 </div>

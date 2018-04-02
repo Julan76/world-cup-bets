@@ -5,7 +5,7 @@ import {
   MatButtonModule,
   MatCardModule, MatCheckboxModule, MatDialogModule,
   MatFormFieldModule, MatGridListModule, MatIconModule, MatInputModule, MatMenuModule, MatProgressSpinnerModule,
-  MatRadioModule,
+  MatRadioModule, MatSidenavModule,
   MatSnackBarModule, MatTableModule, MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
@@ -14,10 +14,10 @@ import {
 @NgModule({
   imports: [MatButtonModule, MatToolbarModule, BrowserAnimationsModule, MatProgressSpinnerModule, MatTableModule, MatCheckboxModule, MatRadioModule, MatDialogModule, MatSnackBarModule,
     MatCardModule, MatFormFieldModule, MatInputModule
-    , MatMenuModule, MatIconModule, MatGridListModule, MatTooltipModule],
+    , MatMenuModule, MatIconModule, MatGridListModule, MatTooltipModule, MatSidenavModule],
   exports: [MatButtonModule, MatToolbarModule, BrowserAnimationsModule, MatProgressSpinnerModule, MatTableModule, MatCheckboxModule, MatRadioModule, MatDialogModule, MatSnackBarModule,
     MatCardModule, MatFormFieldModule,
-    MatInputModule, MatMenuModule, MatIconModule, MatGridListModule, MatTooltipModule],
+    MatInputModule, MatMenuModule, MatIconModule, MatGridListModule, MatTooltipModule, MatSidenavModule],
   declarations: []
 })
 export class MyOwnCustomMaterialModuleModule {

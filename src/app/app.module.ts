@@ -8,12 +8,16 @@ import { LoginComponent } from './login/login.component';
 import {environment} from '../environments/environment';
 import { AppRoutingModule } from './/app-routing.module';
 import {UserService} from './user.service';
+import { FixtureComponent } from './fixture/fixture.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    FixtureComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

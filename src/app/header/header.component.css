@@ -10,3 +10,6 @@ mat-toolbar.mat-toolbar{
      Every toolbar row uses a flexbox row layout. */
   flex: 1 1 auto;
 }
+.mat-sidenav {
+  width: 400px;
+}

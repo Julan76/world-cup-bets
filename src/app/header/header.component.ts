@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service';
 import {UserApp} from '../classes/userApp';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,9 @@ import {UserApp} from '../classes/userApp';
 })
 export class HeaderComponent implements OnInit {
      user: UserApp;
-  constructor(private userService: UserService) {
+     location = '';
+  constructor(private userService: UserService, private router: Router) {
+    this.location = this.router.url;
     userService.publicUser.subscribe((newUser: UserApp) => {
       this.user = newUser;
     });

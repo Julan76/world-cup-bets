@@ -25,7 +25,7 @@ import { HeaderComponent } from './header/header.component';
     AppRoutingModule,
     MyOwnCustomMaterialModuleModule
   ],
-  providers: [AngularFireAuth,UserService],
+  providers: [AngularFireAuth, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

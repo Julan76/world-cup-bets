@@ -18,7 +18,8 @@ import {
     , MatMenuModule, MatIconModule, MatGridListModule, MatTooltipModule, MatSidenavModule, MatListModule],
   exports: [MatButtonModule, MatToolbarModule, BrowserAnimationsModule, MatProgressSpinnerModule, MatTableModule, MatCheckboxModule, MatRadioModule, MatDialogModule, MatSnackBarModule,
     MatCardModule, MatFormFieldModule,
-    MatInputModule, MatMenuModule, MatIconModule, MatGridListModule, MatTooltipModule, MatSidenavModule, MatListModule],
+    MatInputModule, MatMenuModule, MatIconModule, MatGridListModule, MatTooltipModule, MatSidenavModule, MatListModule,
+  ],
   declarations: []
 })
 export class MyOwnCustomMaterialModuleModule {

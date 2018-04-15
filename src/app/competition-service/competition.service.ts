@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {catchError} from 'rxjs/operators';
 import {of} from 'rxjs/observable/of';
+import {Competition} from '../classes/competition';
 
 
 @Injectable()
@@ -12,9 +13,9 @@ export class CompetitionService {
   constructor(private http: HttpClient) { }
   private myCompetitions;
 
-  getAllCompetitions(): Observable<Object> {
+  getAllCompetitions(): Observable<Competition[]> {
     console.log(this.myCompetitions);
-    if (!this.myCompetitions) {
+    if (typeof this.myCompetitions ===  'undefined') {
       this.myCompetitions = this.http.get(this.allCompetitionsUrl)
         .pipe(
           catchError(this.handleError('Competitions not working', []))

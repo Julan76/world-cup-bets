@@ -1,8 +1,4 @@
 <mat-toolbar class="mat-toolbar" color="primary">
-  <button mat-button class="hamburger mat-button"  (click)="sidenav1.open()">
-    <span class="mat-button-wrapper"><mat-icon class="mat-icon" role="img" svgicon="menu" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" focusable="false" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg></mat-icon>
-    </span><div class="mat-button-ripple mat-ripple" matripple=""></div><div class="mat-button-focus-overlay"></div>
-  </button>
   <span>World Cup 2018</span>
 
   <span  *ngIf="user.name" class="example-fill-remaining-space"></span>
@@ -12,30 +8,4 @@
   </span>
 </mat-toolbar>
 
-<mat-sidenav-container>
-  <mat-sidenav #sidenav1>
-    <span class="space"></span>
-    <span class="space"></span>
-    <span class="space"></span>
-    <mat-list role="list">
-      <mat-list-item role="listitem">Item 1</mat-list-item>
-      <mat-list-item role="listitem">Item 2</mat-list-item>
-      <mat-list-item role="listitem">Item 3</mat-list-item>
-    </mat-list>
-  </mat-sidenav>
-
-  <!--***** html part of page *****-->
-  <div style="height: 700px;">
-    <p></p>
-    <span class="space"></span>
-    <div style="text-align: center;">
-      <div *ngIf = "location == '/login' ">
-      <app-login ></app-login>
-      </div>
-        <p>
-      </p>
-    </div>
-  </div>
-
-</mat-sidenav-container>
 

@@ -10,6 +10,9 @@ import { AppRoutingModule } from './/app-routing.module';
 import {UserService} from './user.service';
 import { FixtureComponent } from './fixture/fixture.component';
 import { HeaderComponent } from './header/header.component';
+import {CompetitionService} from './competition-service/competition.service';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpInterceptorService} from './interceptor-http-service/http-interceptor.service';
 
 
 @NgModule({
@@ -23,9 +26,15 @@ import { HeaderComponent } from './header/header.component';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AppRoutingModule,
-    MyOwnCustomMaterialModuleModule
+    MyOwnCustomMaterialModuleModule,
+    HttpClientModule
   ],
-  providers: [AngularFireAuth, UserService],
+  providers: [AngularFireAuth, HttpClient, UserService, CompetitionService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true,
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

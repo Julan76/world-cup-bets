@@ -7,6 +7,7 @@ export class Fixture {
   result: Result;
   odds: String;
 
+  fixtures: Fixture[];
 
   constructor(matchday: number) {
     this.matchday = matchday;

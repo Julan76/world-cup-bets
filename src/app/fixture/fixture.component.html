@@ -9,5 +9,12 @@
     </mat-list>
   </mat-sidenav>
   <mat-sidenav-content>
+    <div *ngIf="selectedCompet">
+      <mat-list role="list">
+        <mat-list-item *ngFor="let fixture of fixtureList" role="listitem">{{fixture.homeTeamName}}    VS   {{fixture.awayTeamName}}</mat-list-item>
+      </mat-list>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+

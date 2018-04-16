@@ -3,7 +3,7 @@ import {UserService} from '../user-service/user.service';
 import {Router} from '@angular/router';
 import {CompetitionService} from '../competition-service/competition.service';
 import {Competition} from '../classes/competition';
-import {Fixture} from '../classes/fixture';
+import {Fixture, FixtureMap} from '../classes/fixture';
 
 @Component({
   selector: 'app-fixture',
@@ -13,10 +13,12 @@ import {Fixture} from '../classes/fixture';
 export class FixtureComponent implements OnInit {
   competitionList = [];
   fixtureList = [];
-  selectedCompet: Competition;
-  constructor( private userService: UserService, private router: Router, private competitionService: CompetitionService) {
+  private arrayFixtureMap:  FixtureMap[] = new Array();
+    selectedCompet: Competition;
 
+  constructor( private userService: UserService, private router: Router, private competitionService: CompetitionService) {
   }
+
   ngOnInit() {
     if (this.userService.getUserApp().name == null) {
       this.router.navigate(['login']);
@@ -32,14 +34,20 @@ export class FixtureComponent implements OnInit {
       },
       e => console.log("error while getting competitions ", e));
   }
+
   loadFixturesForCompet(id): void {
-  this.competitionService.getFixturesForCompetition(id)
-    .subscribe((fixtures: Fixture[] ) => {
-        this.fixtureList = fixtures;
-        this.competitionService.addFixtureMapToArray(id, fixtures);
-       // console.log(fixtures);
-      },
-      e => console.log("error while getting competitions ", e));
+    if (!this.arrayFixtureMap.find(fixtures => fixtures.idCompet === id)) {
+      this.competitionService.getFixturesForCompetition(id)
+        .subscribe((fixtures: Object[]) => {
+            this.fixtureList = fixtures.fixtures;
+            console.log(fixtures.fixtures);
+            this.arrayFixtureMap.push(new FixtureMap(id, fixtures));
+          },
+          e => console.log("error while getting competitions ", e));
+    }  else {
+      this.fixtureList = this.arrayFixtureMap.find(fixtures => fixtures.idCompet === id).fixtures;
+    }
+
   }
   onSelect(compet: Competition): void {
     this.selectedCompet = compet;

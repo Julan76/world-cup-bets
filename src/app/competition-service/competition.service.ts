@@ -18,9 +18,6 @@ export class CompetitionService {
 
   private myCompetitions;
   private fixtureListForCompet;
-  arrayFixtureMap: FixtureMap[] = [];
-  private fix = new BehaviorSubject<Fixture[]>([]);
-
 
   getAllCompetitions(): Observable<Competition[]> {
     if (typeof this.myCompetitions === 'undefined') {
@@ -35,27 +32,12 @@ export class CompetitionService {
   }
 
   getFixturesForCompetition(id): Observable<Fixture[]> {
-    let arrayFixtureMapMatching = null;
-    if (typeof this.arrayFixtureMap !== 'undefined' ) {
-       arrayFixtureMapMatching = this.arrayFixtureMap.filter(map => map.idCompet === id);
-    }
-    console.log("ii " , arrayFixtureMapMatching);
-    if (arrayFixtureMapMatching.length === 0) {
-      console.log("ad");
-   // return this.fixtureListArray.filter(compet => compet.id === id);
-      this.fixtureListForCompet = this.http.get(this.allCompetitionsUrl + "/" + id + "/fixtures?timeFrame=n23")
-        .pipe(
-          catchError(this.handleError('Fixtures for compet not working', []))
-        );
-      return this.fixtureListForCompet;
-    } else {
-      this.fix.next(arrayFixtureMapMatching[0].fixtures);
-      return this.fix;
-    }
-  }
-
-  addFixtureMapToArray(id, fixtures) {
-    this.arrayFixtureMap.push(new FixtureMap(id, fixtures));
+    // return this.fixtureListArray.filter(compet => compet.id === id);
+    this.fixtureListForCompet = this.http.get(this.allCompetitionsUrl + "/" + id + "/fixtures?timeFrame=n23")
+      .pipe(
+        catchError(this.handleError('Fixtures for compet not working', []))
+      );
+    return this.fixtureListForCompet;
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

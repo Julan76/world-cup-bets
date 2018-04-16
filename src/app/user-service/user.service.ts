@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import { UserApp } from './classes/userApp';
+import { UserApp } from '../classes/userApp';
 
 @Injectable()
 export class UserService {

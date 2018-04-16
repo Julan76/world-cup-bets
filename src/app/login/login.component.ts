@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import {UserService} from '../user.service';
+import {UserService} from '../user-service/user.service';
 import {UserApp} from '../classes/userApp';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material';

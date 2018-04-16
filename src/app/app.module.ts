@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import {environment} from '../environments/environment';
 import { AppRoutingModule } from './/app-routing.module';
-import {UserService} from './user.service';
+import {UserService} from './user-service/user.service';
 import { FixtureComponent } from './fixture/fixture.component';
 import { HeaderComponent } from './header/header.component';
 import {CompetitionService} from './competition-service/competition.service';

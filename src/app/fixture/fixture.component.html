@@ -9,11 +9,10 @@
     </mat-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div *ngIf="selectedCompet">
-      <mat-list role="list">
-        <mat-list-item *ngFor="let fixture of fixtureList" role="listitem">{{fixture.homeTeamName}}    VS   {{fixture.awayTeamName}}</mat-list-item>
-      </mat-list>
-    </div>
+    <table style="width: 100%" *ngIf="selectedCompet">
+      <tr *ngFor="let fixture of fixtureList" ><td>{{fixture.homeTeamName}}    VS   {{fixture.awayTeamName}}</td></tr>
+    </table>
+
   </mat-sidenav-content>
 </mat-sidenav-container>
 

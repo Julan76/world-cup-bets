@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user-service/user.service';
 import {Router} from '@angular/router';
 import {CompetitionService} from '../competition-service/competition.service';
@@ -12,11 +12,11 @@ import {Fixture, FixtureMap} from '../classes/fixture';
 })
 export class FixtureComponent implements OnInit {
   competitionList = [];
-  fixtureList = [];
-  private arrayFixtureMap:  FixtureMap[] = new Array();
-    selectedCompet: Competition;
+  fixtureList;
+  private arrayFixtureMap: FixtureMap[] = new Array();
+  selectedCompet: Competition;
 
-  constructor( private userService: UserService, private router: Router, private competitionService: CompetitionService) {
+  constructor(private userService: UserService, private router: Router, private competitionService: CompetitionService) {
   }
 
   ngOnInit() {
@@ -29,26 +29,26 @@ export class FixtureComponent implements OnInit {
 
   loadCompet(): void {
     this.competitionService.getAllCompetitions()
-      .subscribe((competitions: Competition[] ) => {
-      this.competitionList = competitions;
-      },
-      e => console.log("error while getting competitions ", e));
+      .subscribe((competitions: Competition[]) => {
+          this.competitionList = competitions;
+        },
+        e => console.log("error while getting competitions ", e));
   }
 
   loadFixturesForCompet(id): void {
     if (!this.arrayFixtureMap.find(fixtures => fixtures.idCompet === id)) {
       this.competitionService.getFixturesForCompetition(id)
-        .subscribe((fixtures: Object[]) => {
-            this.fixtureList = fixtures.fixtures;
-            console.log(fixtures.fixtures);
-            this.arrayFixtureMap.push(new FixtureMap(id, fixtures));
+        .subscribe((fixtures) => {
+            this.fixtureList = fixtures;
+            this.fixtureList = this.fixtureList.fixtures;
+            this.arrayFixtureMap.push(new FixtureMap(id, this.fixtureList));
           },
           e => console.log("error while getting competitions ", e));
-    }  else {
+    } else {
       this.fixtureList = this.arrayFixtureMap.find(fixtures => fixtures.idCompet === id).fixtures;
     }
-
   }
+
   onSelect(compet: Competition): void {
     this.selectedCompet = compet;
     this.loadFixturesForCompet(this.selectedCompet.id);

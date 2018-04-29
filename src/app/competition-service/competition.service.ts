@@ -31,9 +31,9 @@ export class CompetitionService {
     }
   }
 
-  getFixturesForCompetition(id): Observable<Fixture[]> {
+  getFixturesForCompetition(id): Observable<Object> {
     // return this.fixtureListArray.filter(compet => compet.id === id);
-    this.fixtureListForCompet = this.http.get(this.allCompetitionsUrl + "/" + id + "/fixtures?timeFrame=n23")
+    this.fixtureListForCompet = this.http.get(this.allCompetitionsUrl + "/" + id + "/fixtures?timeFrame=n10")
       .pipe(
         catchError(this.handleError('Fixtures for compet not working', []))
       );

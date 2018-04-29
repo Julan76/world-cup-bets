@@ -40,6 +40,7 @@ export class FixtureComponent implements OnInit {
       this.competitionService.getFixturesForCompetition(id)
         .subscribe((fixtures) => {
             this.fixtureList = fixtures;
+            console.log("where the time ",fixtures);
             this.fixtureList = this.fixtureList.fixtures;
             this.arrayFixtureMap.push(new FixtureMap(id, this.fixtureList));
           },

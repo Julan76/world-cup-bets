@@ -56,3 +56,8 @@ td {
   border-bottom: 1px solid #ddd;
 }
 tr:hover {background-color: #f5f5f5;}
+::ng-deep .mat-card.score {
+  background-color:	 #3f51b5;
+  display: inline-block;
+  padding: 2px;
+}

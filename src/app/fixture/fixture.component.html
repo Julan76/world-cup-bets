@@ -10,7 +10,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <table style="width: 100%" *ngIf="selectedCompet">
-      <tr *ngFor="let fixture of fixtureList" ><td>{{fixture.homeTeamName}}    VS   {{fixture.awayTeamName}}</td> <td>{{fixture.date | date:'full'}}</td></tr>
+      <tr *ngFor="let fixture of fixtureList" ><td>{{fixture.homeTeamName}} <mat-card class="score">score</mat-card>   <mat-card class="score">score</mat-card>  {{fixture.awayTeamName}}</td> <td>{{fixture.date | date:'full'}}</td></tr>
       <tr *ngIf="fixtureList">
         <td *ngIf="fixtureList.length==0">
           <b>Aucun match à venir trouvé !</b>

@@ -12,8 +12,8 @@ import {Fixture, FixtureMap} from '../classes/fixture';
 })
 export class FixtureComponent implements OnInit {
   competitionList = [];
-  fixtureList;
   private arrayFixtureMap: FixtureMap[] = new Array();
+  private fixtureList: Fixture[];
   selectedCompet: Competition;
 
   constructor(private userService: UserService, private router: Router, private competitionService: CompetitionService) {
@@ -38,10 +38,10 @@ export class FixtureComponent implements OnInit {
   loadFixturesForCompet(id): void {
     if (!this.arrayFixtureMap.find(fixtures => fixtures.idCompet === id)) {
       this.competitionService.getFixturesForCompetition(id)
-        .subscribe((fixtures) => {
-            this.fixtureList = fixtures;
-            console.log("where the time ",fixtures);
-            this.fixtureList = this.fixtureList.fixtures;
+        .subscribe((response) => {
+        console.log(response);
+         response.fixtures.forEach(fixture => this.mapLogoToFixture(fixture._links.awayTeam,fixture));
+           this.fixtureList = response.fixtures;
             this.arrayFixtureMap.push(new FixtureMap(id, this.fixtureList));
           },
           e => console.log("error while getting competitions ", e));
@@ -53,5 +53,14 @@ export class FixtureComponent implements OnInit {
   onSelect(compet: Competition): void {
     this.selectedCompet = compet;
     this.loadFixturesForCompet(this.selectedCompet.id);
+  }
+  mapLogoToFixture(href, fixture) {
+    this.competitionService.getTeamInfo(href.href)
+      .subscribe((response) => {
+        this.competitionService.getTeamLogo(response).subscribe((res) => {
+          console.log("la rep " ,res);
+        })
+      })
+
   }
 }

@@ -1,17 +1,25 @@
 export class Fixture {
-  date: Date;
-  status: String;
-  matchday: number;
-  homeTeamName: String;
   awayTeamName: string;
+  date: Date;
+  homeTeamName: String;
+  matchday: number;
+  odds: string;
   result: Result;
-  odds: String;
-
+  status: string;
+  _links: Link;
+  crestUrl: string;
+}
+export class FixtureList {
   fixtures: Fixture[];
-
-  constructor(matchday: number) {
-    this.matchday = matchday;
-  }
+}
+export class Link {
+  awayTeam: Href;
+  competition: Href;
+  homeTeam: Href;
+  self: Href;
+}
+export class Href {
+  href: String;
 }
 
 export class FixtureMap {
